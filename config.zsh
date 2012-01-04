@@ -159,6 +159,5 @@ fi
 # OH-MY-ZSH
 # =========
 OMZ=$ZSH/oh-my-zsh
-# plugins
-omz-plugins git rails ruby brew bundler cap gem github osx pow powder rails3 vagrant
+omz-plugins brew knife gem osx pow powder vagrant
 omz-theme rweng
