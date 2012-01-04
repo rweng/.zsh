@@ -1,7 +1,7 @@
-if command_exists mate; then
-	export EDITOR='mate -w'
-elif command_exists mvim; then
+if command_exists mvim; then
 	export EDITOR='mvim'
+elif command_exists mate; then
+	export EDITOR='mate'
 else
 	export EDITOR='vim'	
 fi
