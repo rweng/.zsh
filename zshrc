@@ -29,7 +29,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails ruby brew  bundler cap gem github osx pow powder rails3 rvm vagrant)
+plugins=(git rails ruby brew bundler cap gem github osx pow powder rails3 vagrant)
 
 source $ZSH/oh-my-zsh.sh
 

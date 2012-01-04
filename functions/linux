@@ -1,0 +1,3 @@
+# sniff out the platform
+uname=`uname -s`
+[[ "$uname" = "Linux"  ]]

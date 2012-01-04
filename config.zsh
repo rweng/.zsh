@@ -1,76 +1,155 @@
-# if [[ -n $SSH_CONNECTION ]]; then
-# 	export PS1='%m:%3~$(git_info_for_prompt)%# '
-# else
-# 	export PS1='%3~$(git_info_for_prompt)%# '
-# fi
-
-if (( ${+commands[mate]} ));then
-	export EDITOR='mate'
-elif (( ${+commands[mvim]} ));then
-	export EDITOR="mvim"
-else
-	export EDITOR='vim'
-fi
-
-# uncommented since this is system dependent
-# export PATH="$HOME/bin:$HOME/.bin:/usr/local/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
-# export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
-#
-# uncommented since this is system dependent (caused error on configure nginx on my server)
-# export CC=gcc-4.2
-
-# LANG is required by some programs, like ruby, so ensure that it is set (to UTF)
-export LANG=en_US.UTF-8
-
-if [[ -e /usr/libexec/java_home ]]; then
-  export JAVA_HOME="`/usr/libexec/java_home`"
-fi
-
-export IDEA_JDK="$JAVA_HOME"
+# load functions
 fpath=(~/.zsh/functions $fpath)
-
 autoload -U ~/.zsh/functions/*(:t)
 
-#HISTFILE=~/.zsh_history
-#HISTSIZE=1000
-#SAVEHIST=1000
-#REPORTTIME=10 # print elapsed time when more than 10 seconds
+# http://tomafro.net/2009/10/tip-cdpath-am-i-the-last-to-know
+cdpath=(~ ~/code ~/Dropbox)
 
-#setopt NO_BG_NICE # don't nice background tasks
-#setopt NO_HUP
-#setopt NO_LIST_BEEP
-#setopt LOCAL_OPTIONS # allow functions to have local options
-#setopt LOCAL_TRAPS # allow functions to have local traps
-#setopt HIST_VERIFY
-## setopt SHARE_HISTORY # share history between sessions ???
-unsetopt EXTENDED_HISTORY # add timestamps to history
-#setopt PROMPT_SUBST
-#setopt CORRECT
-#setopt COMPLETE_IN_WORD
-#setopt IGNORE_EOF
-#setopt AUTOCD # change to directory without "cd"
 
-#setopt APPEND_HISTORY # adds history
-#setopt INC_APPEND_HISTORY # SHARE_HISTORY  # adds history incrementally and share it across sessions
-#setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
-#setopt HIST_REDUCE_BLANKS
+# 1. Environment Vars
+# ===================
+. ~/.zsh/env_vars.zsh
 
-#zle -N newtab
 
-#bindkey '^[^[[D' backward-word
-#bindkey '^[^[[C' forward-word
-#bindkey '^[[5D' beginning-of-line
-#bindkey '^[[5C' end-of-line
-#bindkey '^[[3~' delete-char
-#bindkey '^[^N' newtab
-#bindkey '^?' backward-delete-char 
-#bindkey '\e[3~' delete-char
+# 2. Limits
+# =========
+# limit coredumpsize        30m          # limit core dumps to 30mb
+# limit stacksize            8m          # limit stack to 8mb
 
-# reverse everything above and set it to default vim key-binding
-#bindkey -e
-## bindkey '' history-incremental-search-backward
-#bindkey '' backward-word
-#bindkey '' forward-word
 
-# ctrl-< and crtrl-> still works
-export DISABLE_AUTO_UPDATE=true
+# 3. Shell Options
+# ================
+. ~/.zsh/options.zsh
+
+
+# 4. Terminal Settings
+# ====================
+
+function precmd {
+    rehash
+}
+
+autoload -U colors            # we need the colors for some formats below
+colors
+
+
+# 5. ZLE Keybindings
+# ==================
+bindkey '\ep' history-beginning-search-backward
+
+
+# 6. Prompt Subsystem
+# ===================
+
+# Load the prompt theme system
+autoload -U promptinit
+promptinit
+
+
+# 7. Aliases
+# ===========
+. ~/.zsh/aliases.zsh
+
+
+# 8. Unsorted (new) stuff
+# =======================
+
+# if commands takes more than 10 seconds tell me how long it took
+export REPORTTIME=10
+
+# use less instead of the default more when no cmd is specified
+export READNULLCMD=less
+
+# set shell options
+setopt no_badpattern            # supress err msgs
+setopt cbases                   # 0xFF instead of 16#FF
+setopt globsubst                # parameter expns eligible for filename expn & generation
+setopt interactivecomments      # comments allowed in interactive shells
+setopt no_hup                   # leave bg tasks running (a la nohup)
+#setopt magicequalsubst         # performs filename expansion on 'arg' part of
+                                #  foo=arg parameters.
+
+bindkey -e                      # emacs style key bindings
+bindkey '^I' complete-word      # complete on tab, leave expansion to _expand
+
+# default in linux is backspace sends ^H, emacs no likey
+#stty erase '^?'
+TERMINFO=$HOME/.terminfo
+
+# curl convenience functions
+# ==========================
+curl=`which curl`
+if [[ -x "$curl" ]]; then
+
+	# get <url>
+    function get {
+        $curl -i -H 'x-requested-with: XMLHttpRequest' "$1"
+    }
+
+	# put <url> <json>
+    function put {
+        $curl -i -X PUT -H 'x-requested-with: XMLHttpRequest' -H 'content-type: application/json' -d "$2" "$1"
+    }
+
+	# post <url> <json>
+    function post {
+        $curl -i -X POST -H 'x-requested-with: XMLHttpRequest' -H 'content-type: application/json' -d "$2" "$1"
+    }
+
+	# delete <url>
+    function delete {
+        $curl -i -X DELETE -H 'x-requested-with: XMLHttpRequest' "$1"
+    }
+
+fi
+
+# 9. Completion
+# =============
+
+# more verbose completion prompt
+zstyle ':completion:*' format '%SCompleting %U%d%u%s'
+zstyle :completion::complete:cd:: tag-order \
+        local-directories path-directories
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' auto-description 'specify %d:'
+zstyle ':completion:*' completer _expand _complete _files
+zstyle ':completion:*' expand prefix
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'r:|[._-]=* r:|=*' 'r:|[._-]=* r:|=*' 'r:|[._-]=* r:|=*'
+zstyle ':completion:*' menu select=0
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename "$ZDOTDIR/zshrc"
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+
+# 10. SSH Keychain
+# ================
+# OS X includes keychain now, cool.
+if command_exists keychain; then
+    if [[ -f ~/.ssh/id_rsa ]]; then
+        keychain --nogui ~/.ssh/id_rsa
+    fi
+    if [[ -f ~/.ssh/id_rsa-dreamhost ]]; then
+        keychain --nogui ~/.ssh/id_rsa-dreamhost
+    fi
+    KEYCHAINFILE="$HOME/.keychain/$(hostname)-sh"
+    if [[ -f $KEYCHAINFILE ]]; then
+        source $KEYCHAINFILE >/dev/null
+    fi
+fi
+
+
+# 11. rbenv
+# =========
+
+if command_exists rbenv; then
+	eval "$(rbenv init -)"
+fi
