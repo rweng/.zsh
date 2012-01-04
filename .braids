@@ -1,0 +1,8 @@
+--- 
+oh-my-zsh: 
+  branch: master
+  remote: master/braid/oh-my-zsh
+  revision: 8c45b739181ba58e91e2dceaa53b08161c46b03f
+  squashed: true
+  type: git
+  url: https://github.com/robbyrussell/oh-my-zsh.git
