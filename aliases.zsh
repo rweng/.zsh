@@ -32,3 +32,6 @@ alias rake_db_migrate_both="rake db:migrate && rake db:migrate RAILS_ENV=test"
 alias %=' '
 
 alias sleepmac="osascript -e 'tell application \"System Events\" to sleep'"
+
+alias mstore="sshfs robin@rwhq.de:/home/robin/store ~/tmp/store -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=store"
+alias mbackup="mstore;encfs ~/tmp/store/backup ~/tmp/backup  -ovolname=backup"
