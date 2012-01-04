@@ -1,0 +1,7 @@
+source $OMZ/lib/git.zsh
+
+if [ -f $ZSH/themes/$1.zsh ]; then
+  source $ZSH/themes/$1.zsh
+elif [ -f $OMZ/themes/$1.zsh-theme ]; then
+  source $OMZ/themes/$1.zsh-theme
+fi

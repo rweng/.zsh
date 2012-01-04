@@ -1,3 +1,5 @@
+ZSH=~/.zsh
+
 # load functions
 fpath=(~/.zsh/functions $fpath)
 autoload -U ~/.zsh/functions/*(:t)
@@ -8,7 +10,7 @@ cdpath=(~ ~/code ~/Dropbox)
 
 # 1. Environment Vars
 # ===================
-. ~/.zsh/env_vars.zsh
+. $ZSH/env_vars.zsh
 
 
 # 2. Limits
@@ -19,7 +21,7 @@ cdpath=(~ ~/code ~/Dropbox)
 
 # 3. Shell Options
 # ================
-. ~/.zsh/options.zsh
+. $ZSH/options.zsh
 
 
 # 4. Terminal Settings
@@ -48,7 +50,7 @@ promptinit
 
 # 7. Aliases
 # ===========
-. ~/.zsh/aliases.zsh
+. $ZSH/aliases.zsh
 
 
 # 8. Unsorted (new) stuff
@@ -153,3 +155,10 @@ fi
 if command_exists rbenv; then
 	eval "$(rbenv init -)"
 fi
+
+# OH-MY-ZSH
+# =========
+OMZ=$ZSH/oh-my-zsh
+# plugins
+omz-plugins git rails ruby brew bundler cap gem github osx pow powder rails3 vagrant
+omz-theme rweng
