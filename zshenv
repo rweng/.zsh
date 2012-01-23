@@ -1,1 +1,6 @@
-eval "$(rbenv init -)"
+. ~/.zsh/config.zsh
+
+if [ -f ~/.localrc ]; then
+	. ~/.localrc
+fi
+

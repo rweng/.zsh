@@ -139,9 +139,6 @@ if command_exists keychain; then
     if [[ -f ~/.ssh/id_rsa ]]; then
         keychain --nogui ~/.ssh/id_rsa
     fi
-    if [[ -f ~/.ssh/id_rsa-dreamhost ]]; then
-        keychain --nogui ~/.ssh/id_rsa-dreamhost
-    fi
     KEYCHAINFILE="$HOME/.keychain/$(hostname)-sh"
     if [[ -f $KEYCHAINFILE ]]; then
         source $KEYCHAINFILE >/dev/null
@@ -151,13 +148,14 @@ fi
 
 # 11. rbenv
 # =========
-
 if command_exists rbenv; then
 	eval "$(rbenv init -)"
 fi
 
+
+
 # OH-MY-ZSH
 # =========
 OMZ=$ZSH/oh-my-zsh
-omz-plugins brew knife gem osx pow powder vagrant
+omz-plugins brew knife gem osx pow powder vagrant bundler
 omz-theme rweng

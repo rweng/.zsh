@@ -1,9 +1,9 @@
+export PATH="$HOME/.bin:$PATH"
+
 if command_exists mvim; then
-	export EDITOR='mvim'
+	export EDITOR='vim'
 elif command_exists mate; then
 	export EDITOR='mate'
-else
-	export EDITOR='vim'	
 fi
 # VISUAL should usually be set to the same value as EDITOR
 export VISUAL=$EDITOR
@@ -19,3 +19,5 @@ fi
 
 # for IntelliJ IDEA
 export IDEA_JDK="$JAVA_HOME"
+
+export LC_ALL=en_US.UTF-8

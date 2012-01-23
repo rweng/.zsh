@@ -2,8 +2,8 @@
 # ---------------------------------------
 #setopt ignoreeof           # ignore EOF ('^D') (i.e. don't log out on it)
 setopt braceccl             # {a-d} expands to a b c d
-setopt noclobber            # don't overwrite existing files w/ > output redir
-setopt hist_allow_clobber   # C-p or UP and command has >| now, ready to go
+# setopt noclobber            # don't overwrite existing files w/ > output redir
+# setopt hist_allow_clobber   # C-p or UP and command has >| now, ready to go
 
 # 3.2. Changing Directories
 # -------------------------
@@ -64,12 +64,12 @@ setopt no_beep          # don't beep on errors (in ZLE)
 
 # when completing and then typing | > etc. don't delete
 # the preceding space
-self-insert-redir() {
-    integer l=$#LBUFFER
-    zle self-insert
-    (( $l >= $#LBUFFER )) && LBUFFER[-1]=" $LBUFFER[-1]"
-}
-zle -N self-insert-redir
-for op in \| \< \> \&
-  do bindkey "$op" self-insert-redir
-done
+# self-insert-redir() {
+#     integer l=$#LBUFFER
+#     zle self-insert
+#     (( $l >= $#LBUFFER )) && LBUFFER[-1]=" $LBUFFER[-1]"
+# }
+# zle -N self-insert-redir
+# for op in \| \< \> \&
+#   do bindkey "$op" self-insert-redir
+# done
