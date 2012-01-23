@@ -157,5 +157,5 @@ fi
 # OH-MY-ZSH
 # =========
 OMZ=$ZSH/oh-my-zsh
-omz-plugins brew knife gem osx pow powder vagrant bundler
+omz-plugins brew knife gem osx pow powder vagrant bundler git
 omz-theme rweng
