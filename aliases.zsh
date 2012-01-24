@@ -33,16 +33,6 @@ if command_exists git; then
 	if command_exists hub; then
 		alias git='hub'
 	fi
-	alias g='git'
-	alias gp='git push'
-	alias gd='git diff'
-	alias gc='git clone'
-	alias gco='git checkout'
-	alias gb='git branch'
-	alias gs='git status -sb'
-	alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
-	alias gca='grm; git add .;gs;read;git commit'
-	alias git-authors='git shortlog -s -n'
 	# alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
 	
 	# alias a='git add'
@@ -62,15 +52,6 @@ if command_exists git; then
 	# alias rbi='git rebase -i --autosquash'
 	# alias rbiom='git rebase -i --autosquash origin/master'
 
-	GIT_VERSION="$(git --version | head -n1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
-	GIT_VERSION_MAJOR="${GIT_VERSION%%.*}"
-	GIT_VERSION_MINOR="${${GIT_VERSION%.*}#*.}"
-	GIT_VERSION_REVISION="${GIT_VERSION##*.}"
-	if [ "$GIT_VERSION_MINOR" -ge 7 ] && [ "$GIT_VERSION_REVISION" -ge 1 ]; then
-	    alias s='git status -sb'
-	else
-	    alias s='git status'
-	fi
 fi
 
 # rails
@@ -80,7 +61,7 @@ alias rst='touch tmp/restart.txt'
 alias bi="bundle install"
 alias bu="bundle update"
 alias rake_db_migrate_both="rake db:migrate && rake db:migrate RAILS_ENV=test"
-
+alias kicker="be kicker -r rails -b 'spin push'"
 
 # commands starting with % for pasting from web
 alias %=' '
