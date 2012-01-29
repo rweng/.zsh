@@ -21,3 +21,5 @@ fi
 export IDEA_JDK="$JAVA_HOME"
 
 export LC_ALL=en_US.UTF-8
+
+export GISTY_DIR=“$HOME/code/gists”

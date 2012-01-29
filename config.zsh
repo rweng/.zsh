@@ -152,10 +152,10 @@ if command_exists rbenv; then
 	eval "$(rbenv init -)"
 fi
 
-
+set_title_tab
 
 # OH-MY-ZSH
 # =========
 OMZ=$ZSH/oh-my-zsh
-omz-plugins brew knife gem osx pow powder vagrant bundler git
+omz-plugins brew knife gem osx pow powder vagrant bundler git rails3 rbenv
 omz-theme rweng
