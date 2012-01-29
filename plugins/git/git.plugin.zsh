@@ -40,7 +40,7 @@ compdef _git gc=git-clone
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias gca='grm; git add .;gs;read;git commit'
 gcap(){
-	gca ${@}
+	gca "${@}"
 	gp
 }
 alias git-authors='git shortlog -s -n'
