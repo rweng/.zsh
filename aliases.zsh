@@ -22,6 +22,12 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias psg="ps -ef|grep"
 alias rm="trash"
+rm.(){
+	CURPWD="$PWD"
+	cd ..
+	rm -rf "$CURPWD"	
+}
+
 
 # commands starting with % for pasting from web
 alias %=' '
