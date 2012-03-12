@@ -61,15 +61,3 @@ setopt transient_rprompt    # hide RPROMPT after cmdline is executed
 # 3.8. ZLE
 # --------
 setopt no_beep          # don't beep on errors (in ZLE)
-
-# when completing and then typing | > etc. don't delete
-# the preceding space
-# self-insert-redir() {
-#     integer l=$#LBUFFER
-#     zle self-insert
-#     (( $l >= $#LBUFFER )) && LBUFFER[-1]=" $LBUFFER[-1]"
-# }
-# zle -N self-insert-redir
-# for op in \| \< \> \&
-#   do bindkey "$op" self-insert-redir
-# done

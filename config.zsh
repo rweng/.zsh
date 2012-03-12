@@ -37,7 +37,8 @@ colors
 
 # 5. ZLE Keybindings
 # ==================
-bindkey '\ep' history-beginning-search-backward
+bindkey '^F' forward-word
+bindkey '^B' backward-word
 
 
 # 6. Prompt Subsystem
@@ -157,5 +158,5 @@ set_title_tab
 # OH-MY-ZSH
 # =========
 OMZ=$ZSH/oh-my-zsh
-omz-plugins brew knife gem osx pow powder vagrant bundler git rails3 rbenv
+omz-plugins rvm brew knife gem osx pow powder vagrant bundler git rails3
 omz-theme rweng

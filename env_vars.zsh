@@ -1,10 +1,6 @@
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 
-if command_exists mvim; then
-	export EDITOR='vim'
-elif command_exists mate; then
-	export EDITOR='mate'
-fi
+export EDITOR='subl'
 # VISUAL should usually be set to the same value as EDITOR
 export VISUAL=$EDITOR
 	
@@ -22,4 +18,4 @@ export IDEA_JDK="$JAVA_HOME"
 
 export LC_ALL=en_US.UTF-8
 
-export GISTY_DIR=“$HOME/code/gists”
+export GISTY_DIR=$HOME/code/gists

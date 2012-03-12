@@ -29,6 +29,11 @@ rm.(){
 }
 
 
+# postgresql
+alias pg+="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg-="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+
 # commands starting with % for pasting from web
 alias %=' '
 
