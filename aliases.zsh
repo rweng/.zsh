@@ -33,8 +33,15 @@ rm.(){
 alias pg+="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pg-="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
+# mysql
+alias mysql+="mysqld_safe --skip-grant-tables &"
+
 
 # commands starting with % for pasting from web
 alias %=' '
 
 alias sleepmac="osascript -e 'tell application \"System Events\" to sleep'"
+
+if mac; then
+  alias updatedb="sudo /usr/libexec/locate.updatedb"
+fi
