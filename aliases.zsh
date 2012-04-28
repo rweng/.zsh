@@ -16,6 +16,7 @@ alias ll='l -l'
 alias lla='ll -A'
 
 alias e="$EDITOR"
+alias e.="$EDITOR ."
 
 # rails
 alias bi="bundle install"

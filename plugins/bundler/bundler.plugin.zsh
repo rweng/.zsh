@@ -38,7 +38,12 @@ _run-with-bundler() {
 ## Main program
 for cmd in $bundled_commands; do
   eval "function bundled_$cmd () { _run-with-bundler $cmd \$@}"
-  alias $cmd=bundled_$cmd
+
+  if [ $cmd="rake" ]; then
+    alias $cmd="noglob bundled_$cmd"
+  else
+    alias $cmd=bundled_$cmd
+  fi
 
   if which _$cmd > /dev/null 2>&1; then
         compdef _$cmd bundled_$cmd=$cmd
