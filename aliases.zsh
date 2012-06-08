@@ -45,8 +45,9 @@ alias mysql+="mysqld_safe --skip-grant-tables &"
 # commands starting with % for pasting from web
 alias %=' '
 
-alias sleepmac="osascript -e 'tell application \"System Events\" to sleep'"
 
 if mac; then
+  alias sleepmac="osascript -e 'tell application \"System Events\" to sleep'"
+
   alias updatedb="sudo /usr/libexec/locate.updatedb"
 fi
