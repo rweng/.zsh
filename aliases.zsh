@@ -22,7 +22,11 @@ alias e.="$EDITOR ."
 alias bi="bundle install"
 alias bu="bundle update"
 alias psg="ps -ef|grep"
-alias rm="trash"
+
+if command_exists trash; then
+  alias rm="trash"
+fi
+
 rm.(){
 	CURPWD="$PWD"
 	cd ..
