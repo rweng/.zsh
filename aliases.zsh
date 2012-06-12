@@ -33,6 +33,9 @@ rm.(){
 	rm -rf "$CURPWD"	
 }
 
+# ensure that role jsons are generated for littlechef
+alias fix="rake roles:to_json && fix"
+
 
 # postgresql
 alias pg+="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
