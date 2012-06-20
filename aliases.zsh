@@ -34,7 +34,7 @@ rm.(){
 }
 
 # ensure that role jsons are generated for littlechef
-alias fix="rake roles:to_json && fix"
+alias fix="rake before_fix && fix"
 
 
 # postgresql
