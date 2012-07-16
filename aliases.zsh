@@ -44,6 +44,9 @@ alias pg-="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 # mysql
 alias mysql+="mysqld_safe --skip-grant-tables &"
 
+alias showdotfiles="defaults write com.apple.finder AppleShowAllFiles TRUE;killall Finder"
+alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles FALSE;killall Finder"
+
 
 # commands starting with % for pasting from web
 alias %=' '
