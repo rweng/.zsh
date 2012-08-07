@@ -8,6 +8,7 @@ alias bl="bundle list"
 alias bp="bundle package"
 alias bu="bundle update"
 
+
 # The following is based on https://github.com/gma/bundler-exec
 
 bundled_commands=(cap capify jekyll braid cucumber foreman guard nanoc rackup rainbows rake rspec shotgun spec spork thin unicorn unicorn_rails rails autotest)

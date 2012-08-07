@@ -2,7 +2,6 @@
 # --------------------------------
 alias bgd='bg; disown %1'
 alias cp='nocorrect cp'            # don't correct spelling for 'cp'
-alias ev="$EDITOR ~/config/vim/vimrc"
 alias ez="$EDITOR $ZDOTDIR/zshrc && source $ZDOTDIR/zshrc"
 alias rz="source $ZDOTDIR/zshrc"
 alias mkdir='nocorrect mkdir'      # don't correct spelling for 'mkdir'
@@ -18,9 +17,6 @@ alias lla='ll -A'
 alias e="$EDITOR"
 alias e.="$EDITOR ."
 
-# rails
-alias bi="bundle install"
-alias bu="bundle update"
 alias psg="ps -ef|grep"
 
 if command_exists trash; then
@@ -44,16 +40,15 @@ alias pg-="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 # mysql
 alias mysql+="mysqld_safe --skip-grant-tables &"
 
-alias showdotfiles="defaults write com.apple.finder AppleShowAllFiles TRUE;killall Finder"
-alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles FALSE;killall Finder"
-
-
 # commands starting with % for pasting from web
 alias %=' '
 
-
+# OS X
 if mac; then
   alias sleepmac="osascript -e 'tell application \"System Events\" to sleep'"
 
   alias updatedb="sudo /usr/libexec/locate.updatedb"
+
+	alias showdotfiles="defaults write com.apple.finder AppleShowAllFiles TRUE;killall Finder"
+	alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles FALSE;killall Finder"
 fi
