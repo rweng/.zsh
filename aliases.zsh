@@ -16,11 +16,16 @@ alias lla='ll -A'
 
 alias e="$EDITOR"
 alias e.="$EDITOR ."
+alias t="task"
 
 alias psg="ps -ef|grep"
 
-if command_exists trash; then
-  alias rm="trash"
+if function_exists trash; then
+	alias rm="trash"
+elif command_exists rmtrash; then
+	alias rm="rmtrash"
+else
+	echo "no alias for rm"
 fi
 
 rm.(){

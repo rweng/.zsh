@@ -49,11 +49,6 @@ autoload -U promptinit
 promptinit
 
 
-# 7. Aliases
-# ===========
-. $ZSH/aliases.zsh
-
-
 # 8. Unsorted (new) stuff
 # =======================
 
@@ -158,5 +153,10 @@ set_title_tab
 # OH-MY-ZSH
 # =========
 OMZ=$ZSH/oh-my-zsh
-omz-plugins rvm brew knife gem osx pow powder vagrant bundler git rails3
+omz-plugins rvm brew knife gem osx pow powder vagrant bundler git rails3 dpa
 omz-theme rweng
+
+
+# 7. Aliases
+# ===========
+. $ZSH/aliases.zsh
