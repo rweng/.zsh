@@ -1,4 +1,9 @@
 # Aliases
+
+alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias gca='grm; git add .;gs;read;git commit'
+alias greset='git checkout .; git clean -df;'
+
 alias g='git'
 compdef g=git
 alias gst='git status'
@@ -11,7 +16,6 @@ alias gp='git push'
 compdef _git gp=git-push
 gdv() { git-diff -w "$@" | view - }
 compdef _git gdv=git-diff
-alias gca='git commit -v -a'
 compdef _git gca=git-commit
 alias gco='git checkout'
 compdef _git gco=git-checkout
@@ -37,8 +41,11 @@ compdef _git gm=git-merge
 alias gd='git diff'
 alias gc='git clone'
 compdef _git gc=git-clone
-alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
-alias gca='grm; git add .;gs;read;git commit'
+
+gpatch(){
+	git format-patch ${1:-master} --stdout
+}
+
 gcap(){
 	gca "${@}"
 	gp

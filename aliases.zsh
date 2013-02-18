@@ -53,6 +53,7 @@ if mac; then
   alias sleepmac="osascript -e 'tell application \"System Events\" to sleep'"
 
   alias updatedb="sudo /usr/libexec/locate.updatedb"
+  alias flush_dns="dscacheutil -flushcache"
 
 	alias showdotfiles="defaults write com.apple.finder AppleShowAllFiles TRUE;killall Finder"
 	alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles FALSE;killall Finder"
