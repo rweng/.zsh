@@ -153,7 +153,7 @@ set_title_tab
 # OH-MY-ZSH
 # =========
 OMZ=$ZSH/oh-my-zsh
-omz-plugins brew knife gem osx pow powder vagrant bundler git rails3 dpa mongodb
+omz-plugins brew knife gem osx pow powder vagrant bundler git rails3 dpa mongodb sociapply aws
 omz-theme rweng
 
 

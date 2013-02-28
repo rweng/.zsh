@@ -1,4 +1,5 @@
-export PATH="$HOME/.bin:/usr/local/bin:/usr/local/share/npm/bin/:$PATH"
+# PATH variables should not end with a /
+export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
 
 export EDITOR='subl'
 # VISUAL should usually be set to the same value as EDITOR
