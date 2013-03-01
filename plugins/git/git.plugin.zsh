@@ -1,13 +1,35 @@
-# Aliases
+# helpers
+GIT_VERSION="$(git --version | head -n1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
+GIT_VERSION_MAJOR="${GIT_VERSION%%.*}"
+GIT_VERSION_MINOR="${${GIT_VERSION%.*}#*.}"
+GIT_VERSION_REVISION="${GIT_VERSION##*.}"
 
-alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
-alias gca='grm; git add .;gs;read;git commit'
-alias greset='git checkout .; git clean -df;'
+
+# DEFINITIONS
 
 alias g='git'
 compdef g=git
-alias gst='git status'
-compdef _git gst=git-status
+
+# git status
+if [ "$GIT_VERSION_MINOR" -ge 7 ] && [ "$GIT_VERSION_REVISION" -ge 1 ]; then
+    alias gs='git status -sb'
+else
+    alias gs='git status'
+fi
+compdef _git gs=git-status
+
+
+# git unstage
+alias gus="g reset HEAD"
+# git stage all
+alias gst="g add -u"
+
+
+# completely resets to master
+alias greset='git checkout .; git clean -df;'
+
+# git commit all
+alias gca='gst;gs;read;git commit'
 alias gl='git pull'
 compdef _git gl=git-pull
 alias gup='git fetch && git rebase'
@@ -52,12 +74,6 @@ gcap(){
 }
 alias git-authors='git shortlog -s -n'
 
-# Git and svn mix
-alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
-compdef git-svn-dcommit-push=git
-
-alias gsr='git svn rebase'
-alias gsd='git svn dcommit'
 gcd(){ 
 	echo -$1; 
 	if [ "$2" = "" ];then 
@@ -82,15 +98,3 @@ alias ggpush='git push origin $(current_branch)'
 compdef ggpush=git
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
 compdef ggpnp=git
-
-
-GIT_VERSION="$(git --version | head -n1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
-GIT_VERSION_MAJOR="${GIT_VERSION%%.*}"
-GIT_VERSION_MINOR="${${GIT_VERSION%.*}#*.}"
-GIT_VERSION_REVISION="${GIT_VERSION##*.}"
-if [ "$GIT_VERSION_MINOR" -ge 7 ] && [ "$GIT_VERSION_REVISION" -ge 1 ]; then
-    alias gs='git status -sb'
-else
-    alias gs='git status'
-fi
-
