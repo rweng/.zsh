@@ -1,7 +1,17 @@
 # Setup hub function for git, if it is available; http://github.com/defunkt/hub
 if [ "$commands[(I)hub]" ] && [ "$commands[(I)ruby]" ]; then
     # eval `hub alias -s zsh`
-    function git(){hub "$@"}
+    function git(){
+        if ! (( $+_has_working_hub  )); then
+            hub --version &> /dev/null
+            _has_working_hub=$(($? == 0))
+        fi
+        if (( $_has_working_hub )) ; then
+            hub "$@"
+        else
+            command git "$@"
+        fi
+    }
 fi
 
 # Functions #################################################################
@@ -51,6 +61,7 @@ exist_gh() { # [DIRECTORY]
     cd "$1"
     name=$( git config user.name )
     ghuser=$( git config github.user )
+    repo=$1
 
     git remote add origin git@github.com:${ghuser}/${repo}.git
     git push -u origin master
