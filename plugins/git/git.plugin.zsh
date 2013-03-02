@@ -20,9 +20,9 @@ compdef _git gs=git-status
 
 
 # git unstage
-alias gus="g reset HEAD"
+alias gus="g rm -r --cached"
 # git stage all
-alias gst="g add -u"
+alias gst="g add -A"
 
 
 # completely resets to master
