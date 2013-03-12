@@ -142,18 +142,12 @@ if command_exists keychain; then
 fi
 
 
-# 11. rbenv
-# =========
-if command_exists rbenv; then
-	eval "$(rbenv init -)"
-fi
-
 set_title_tab
 
 # OH-MY-ZSH
 # =========
 OMZ=$ZSH/oh-my-zsh
-omz-plugins brew knife gem osx pow powder vagrant bundler git rails3 dpa mongodb sociapply aws
+omz-plugins brew knife gem osx pow powder vagrant bundler git rails3 dpa mongodb sociapply aws rbenv
 omz-theme rweng
 
 
