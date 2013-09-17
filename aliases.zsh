@@ -36,6 +36,12 @@ rm.(){
 
 # ensure that role jsons are generated for littlechef
 alias fix="rake before_fix && fix"
+# kill pid that listens on given port
+# e.g. kport 3000
+kport(){
+	PID_FOUND=`lsof -i :$1|awk '{ print $2 }'| awk 'NR==2'`
+	kill ${PID_FOUND}
+}
 
 
 # postgresql
