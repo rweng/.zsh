@@ -23,3 +23,4 @@ alias tlog='tail -f log/development.log'
 alias rst='touch tmp/restart.txt'
 alias rake_db_migrate_both="rake db:migrate && rake db:migrate RAILS_ENV=test"
 alias kicker="be kicker -r rails -b 'spin push'"
+alias rdbr="rake db:migrate:reset;rdbm"
