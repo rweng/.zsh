@@ -18,6 +18,9 @@ alias e="$EDITOR"
 alias e.="$EDITOR ."
 alias t="task"
 
+alias proxy="ssh -D 8080 arc2"
+alias rproxy="ssh -R 4000:localhost:3000 arc2"
+
 alias psg="ps -ef|grep"
 
 if function_exists trash; then
