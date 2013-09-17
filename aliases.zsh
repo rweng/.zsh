@@ -37,8 +37,6 @@ rm.(){
 	rm -rf "$CURPWD"	
 }
 
-# ensure that role jsons are generated for littlechef
-alias fix="rake before_fix && fix"
 # kill pid that listens on given port
 # e.g. kport 3000
 kport(){
