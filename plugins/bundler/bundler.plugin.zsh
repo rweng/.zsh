@@ -2,16 +2,21 @@ fpath=($ZSH/plugins/bundler $fpath)
 autoload -U compinit
 compinit -i
 
-alias be="bundle exec"
+# alias be="bundle exec"
 alias bi="bundle install"
 alias bl="bundle list"
 alias bp="bundle package"
 alias bu="bundle update"
+alias bs="bundle show"
+# open bundle in Rubymine
+be(){
+  mine `bundle show $1`
+}
+
 
 
 # The following is based on https://github.com/gma/bundler-exec
-
-bundled_commands=(cap capify jekyll braid cucumber foreman guard nanoc rackup rainbows rake rspec shotgun spec spork thin unicorn unicorn_rails rails autotest)
+bundled_commands=(cap capify jekyll cucumber foreman guard nanoc rackup rainbows rake rspec shotgun spec spork thin unicorn unicorn_rails rails autotest)
 
 ## Functions
 
