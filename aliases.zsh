@@ -51,6 +51,7 @@ alias pg-="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 # mysql
 alias mysql+="mysqld_safe --skip-grant-tables &"
+alias mysql-="/usr/local/bin/mysql.server stop"
 
 # commands starting with % for pasting from web
 alias %=' '

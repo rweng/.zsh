@@ -1,6 +1,12 @@
 # must be set after rvm
 # PATH variables should not end with a /
-export PATH="bin:.bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
+echo "env_vars"
+# Homebrew
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# node
+export PATH="$PATH:/usr/local/share/npm/bin"
+# home bin dir
+export PATH="$HOME/.bin:$PATH"
 
 export EDITOR='subl'
 # VISUAL should usually be set to the same value as EDITOR

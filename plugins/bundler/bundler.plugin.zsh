@@ -16,7 +16,7 @@ be(){
 
 
 # The following is based on https://github.com/gma/bundler-exec
-bundled_commands=(cap capify jekyll cucumber foreman guard nanoc rackup rainbows rake rspec shotgun spec spork thin unicorn unicorn_rails rails autotest)
+bundled_commands=(cap capify cucumber foreman guard nanoc rackup rainbows rake rspec shotgun spec spork thin unicorn unicorn_rails rails autotest)
 
 ## Functions
 
